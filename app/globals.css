@@ -3,24 +3,58 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #D4FB20;
+  --secondary: #003BE2;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --font-sans: var(--font-satoshi), ui-sans-serif, system-ui, sans-serif;
+  --font-poppins: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-logo: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+
+  /* Labels — Satoshi Medium, 120% line height (text-label-m / -s / -xs) */
+  --text-label-m: 1rem;
+  --text-label-m--line-height: 1.2;
+  --text-label-m--font-weight: 500;
+  --text-label-s: 0.875rem;
+  --text-label-s--line-height: 1.2;
+  --text-label-s--font-weight: 500;
+  --text-label-xs: 0.75rem;
+  --text-label-xs--line-height: 1.2;
+  --text-label-xs--font-weight: 500;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+}
+
+/*
+ * Hero scaling units. The hero is laid out in the design's own coordinate
+ * space (847 units wide) so every element keeps its exact proportions.
+ * --u  : 1 design unit, relative to the hero width (text, nav, shapes)
+ * --su : 1 design unit for the illustration stage — zoomed in on small
+ *        screens so the cards stay readable (edges get cropped instead).
+ */
+.hero-scale {
+  --u: calc(100cqw / 847);
+  --su: var(--u);
+}
+
+@media (max-width: 639px) {
+  .hero-scale {
+    --su: calc(100cqw / 430);
+  }
 }
