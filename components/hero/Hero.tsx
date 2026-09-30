@@ -1,65 +1,8 @@
 import Image from "next/image";
-import Link from "next/link";
 import { floatingCard, ProgressCard, StudentsCard } from "@/components/ui/cards";
 import { GridLines, shapeClass } from "@/components/ui/decor";
-import Logo from "@/components/ui/Logo";
-
-const NAV_LINKS = [
-  { label: "Home", href: "/", active: true },
-  { label: "Courses", href: "/courses" },
-  { label: "Creators", href: "/creators" },
-];
-
-function SearchIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className="size-4 shrink-0 text-[#6B6B6B] sm:size-5" aria-hidden>
-      <circle cx="11" cy="11" r="6.5" stroke="currentColor" strokeWidth="2" />
-      <path d="m16 16 4.5 4.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function BagIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className="size-6" aria-hidden>
-      <path d="M5 7.5h14l-1 13H6l-1-13Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
-      <path d="M9 10V6a3 3 0 0 1 6 0v4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function Navbar() {
-  return (
-    <header className="relative z-30 mx-auto grid w-full max-w-[1320px] grid-cols-[1fr_auto_1fr] items-center px-5 pt-6 lg:pt-8">
-      <Logo priority className="justify-self-start" />
-
-      <nav aria-label="Primary" className="hidden items-center gap-7 text-label-m md:flex">
-        {NAV_LINKS.map((link) => (
-          <Link
-            key={link.label}
-            href={link.href}
-            aria-current={link.active ? "page" : undefined}
-            className={link.active ? "text-white" : "text-white/80 transition hover:text-white"}
-          >
-            {link.label}
-          </Link>
-        ))}
-      </nav>
-
-      <div className="col-start-3 flex items-center gap-5 justify-self-end text-label-m lg:gap-7">
-        <Link href="/sign-in" className="hidden text-white/80 transition hover:text-white sm:inline">
-          Sign In
-        </Link>
-        <Link href="/join" className="text-white/80 transition hover:text-white">
-          Join Us
-        </Link>
-        <Link href="/cart" aria-label="Cart" className="text-white/80 transition hover:text-white">
-          <BagIcon />
-        </Link>
-      </div>
-    </header>
-  );
-}
+import { SearchIcon } from "@/components/ui/icons";
+import Navbar from "@/components/ui/Navbar";
 
 function SearchBar() {
   return (
@@ -179,7 +122,7 @@ export default function Hero() {
     <section className="relative overflow-hidden bg-secondary text-white">
       <GridLines />
 
-      <Navbar />
+      <Navbar active="/" />
 
       <div className="relative z-30 mx-auto max-w-[1320px] px-5 pt-10 text-center sm:pt-12 lg:pt-24">
         <h1 className="mx-auto max-w-[960px] font-poppins text-[32px] font-semibold leading-tight sm:text-5xl lg:text-7xl lg:leading-[1.2] xl:max-w-[1080px] xl:text-[80px]">
