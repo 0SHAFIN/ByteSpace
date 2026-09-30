@@ -41,20 +41,11 @@ body {
   font-family: var(--font-sans);
 }
 
-/*
- * Hero scaling units. The hero is laid out in the design's own coordinate
- * space (847 units wide) so every element keeps its exact proportions.
- * --u  : 1 design unit, relative to the hero width (text, nav, shapes)
- * --su : 1 design unit for the illustration stage — zoomed in on small
- *        screens so the cards stay readable (edges get cropped instead).
- */
-.hero-scale {
-  --u: calc(100cqw / 847);
-  --su: var(--u);
-}
 
-@media (max-width: 639px) {
-  .hero-scale {
-    --su: calc(100cqw / 430);
+/* Tailwind v4 dropped the pointer cursor on buttons — restore it site-wide */
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
   }
 }

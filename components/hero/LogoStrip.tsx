@@ -33,18 +33,11 @@ const ICONS = [
 
 export default function LogoStrip() {
   return (
-    <section aria-label="Trusted by" className="bg-[#F4F4F4] [container-type:inline-size]">
-      <ul
-        className="mx-auto flex flex-wrap items-center justify-center gap-x-10 gap-y-6 px-4 py-10 text-[#8A8A8A] lg:justify-between"
-        style={{ maxWidth: "calc(667 * 100cqw / 847 + 32px)", paddingBlock: "clamp(32px, 100cqw * 38 / 847, 84px)" }}
-      >
+    <section aria-label="Trusted by" className="bg-[#F4F4F4]">
+      <ul className="mx-auto flex max-w-[1320px] flex-wrap items-center justify-center gap-x-8 gap-y-5 px-5 py-8 sm:gap-x-10 sm:gap-y-6 sm:py-10 text-[#8A8A8A] lg:justify-between lg:py-16">
         {ICONS.map((icon, i) => (
-          <li
-            key={i}
-            className="flex items-center gap-[0.35em] font-poppins font-semibold tracking-tight"
-            style={{ fontSize: "clamp(18px, 100cqw * 14 / 847, 30px)" }}
-          >
-            <span className="size-[1.55em] shrink-0">{icon}</span>
+          <li key={i} className="flex items-center gap-2 font-poppins text-base font-semibold tracking-tight sm:text-lg lg:text-2xl xl:text-[28px]">
+            <span className="size-6 shrink-0 sm:size-7 lg:size-9 xl:size-10">{icon}</span>
             Logoipsum
           </li>
         ))}
