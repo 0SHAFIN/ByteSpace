@@ -47,7 +47,7 @@ export default function CreatorCta() {
           href="/join"
           className="mt-8 inline-flex h-11 items-center rounded-full bg-primary px-6 text-sm font-bold text-[#141414] transition hover:brightness-95 sm:mt-10 sm:h-12 sm:px-8 sm:text-base lg:text-lg xl:h-14 xl:px-10 xl:text-xl"
         >
-          Become a Creator
+          Join as Creator
         </Link>
       </div>
     </section>
