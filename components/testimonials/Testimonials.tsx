@@ -49,10 +49,10 @@ export default function Testimonials() {
           </p>
         </div>
 
-        <ul className="mt-8 grid items-start gap-4 sm:mt-12 md:grid-cols-3 lg:mt-14 lg:gap-6 xl:gap-8">
+        <ul className="mt-8 grid gap-4 sm:mt-12 md:grid-cols-3 lg:mt-14 lg:gap-6 xl:gap-8">
           {TESTIMONIALS.map((t) => (
-            <li key={t.name}>
-              <figure className="rounded-2xl bg-white p-5 lg:rounded-3xl lg:p-6 xl:p-8">
+            <li key={t.name} className="flex">
+              <figure className="w-full rounded-2xl bg-white p-5 lg:rounded-3xl lg:p-6 xl:p-8">
                 <Image
                   src={t.avatar}
                   alt=""

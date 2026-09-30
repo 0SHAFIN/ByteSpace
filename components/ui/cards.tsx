@@ -1,7 +1,8 @@
 import Image from "next/image";
 
 /** White floating card used over illustrations (hero, features). Position it with `className`. */
-const floatingCardBase = "absolute z-20 whitespace-nowrap rounded-xl bg-white text-[#141414]";
+const cardLayout = "absolute z-20 whitespace-nowrap rounded-xl text-[#141414]";
+const floatingCardBase = `${cardLayout} bg-white`;
 export const floatingCard = `${floatingCardBase} shadow-[0_10px_30px_rgba(0,20,90,0.18)]`;
 
 // Unsplash portraits (Unsplash License), face-cropped and self-hosted
@@ -15,12 +16,12 @@ export const AVATARS = [
   "/avatars/avatar-7.jpg",
 ];
 
-export function StarIcon() {
+export function StarIcon({ color = "#D4FB20" }: { color?: string }) {
   return (
     <svg viewBox="0 0 24 24" className="size-4" aria-label="stars">
       <path
         d="M12 2.5c.4 0 .7.2.9.6l2.3 4.8 5.2.7c.8.1 1.2 1.1.6 1.7l-3.8 3.7.9 5.2c.1.8-.7 1.4-1.4 1L12 17.8l-4.7 2.4c-.7.4-1.5-.2-1.4-1l.9-5.2-3.8-3.7c-.6-.6-.2-1.6.6-1.7l5.2-.7 2.3-4.8c.2-.4.5-.6.9-.6Z"
-        fill="#D4FB20"
+        fill={color}
       />
     </svg>
   );
@@ -30,6 +31,11 @@ type CardProps = {
   className?: string;
   /** Smaller, shadowless variant used beside section illustrations (hero uses the large one). */
   compact?: boolean;
+};
+
+type StudentsCardProps = CardProps & {
+  /** Lime background with a dark badge (auth pages). */
+  lime?: boolean;
 };
 
 export function ProgressCard({ className = "", compact = false }: CardProps) {
@@ -63,7 +69,7 @@ export function ProgressCard({ className = "", compact = false }: CardProps) {
   );
 }
 
-export function StudentsCard({ className = "", compact = false }: CardProps) {
+export function StudentsCard({ className = "", compact = false, lime = false }: StudentsCardProps) {
   const avatar = compact
     ? "-ml-1.5 size-6 lg:-ml-2.5 lg:size-10 xl:-ml-3 xl:size-11"
     : "-ml-2 size-7 sm:size-8 lg:-ml-4 lg:size-[54px]";
@@ -72,13 +78,13 @@ export function StudentsCard({ className = "", compact = false }: CardProps) {
     : "-ml-2 size-8 text-label-xs sm:size-9 lg:-ml-4 lg:size-[54px] lg:text-label-s";
 
   return (
-    <div className={`${compact ? floatingCardBase : floatingCard} rounded-2xl ${compact ? "p-2.5 lg:p-4 xl:p-5" : "p-3 lg:p-4"} ${className}`}>
+    <div className={`${lime ? `${cardLayout} bg-primary` : compact ? floatingCardBase : floatingCard} rounded-2xl ${compact ? "p-2.5 lg:p-4 xl:p-5" : "p-3 lg:p-4"} ${className}`}>
       <p className={compact ? "text-xs leading-tight lg:text-base xl:text-lg" : "text-base font-medium leading-tight lg:text-xl"}>
         Happy Students
       </p>
       <p className={`mt-1 flex items-center gap-1 font-medium ${compact ? "text-[10px] lg:text-xs xl:text-sm" : "text-xs lg:text-base"}`}>
-        4.5 <span className="text-[#8B8B8B]">(240)</span>
-        <StarIcon />
+        4.5 <span className={lime ? "text-[#141414]/60" : "text-[#8B8B8B]"}>(240)</span>
+        <StarIcon color={lime ? "#003BE2" : undefined} />
       </p>
       <div className={`flex items-center ${compact ? "mt-1.5 lg:mt-2.5" : "mt-2 lg:mt-3"}`}>
         {AVATARS.map((src) => (
@@ -92,7 +98,7 @@ export function StudentsCard({ className = "", compact = false }: CardProps) {
           />
         ))}
         <span
-          className={`${badge} flex shrink-0 items-center justify-center rounded-full border-2 border-white bg-primary font-bold`}
+          className={`${badge} flex shrink-0 items-center justify-center rounded-full border-2 font-bold ${lime ? "border-primary bg-[#141414] text-white" : "border-white bg-primary"}`}
         >
           2K+
         </span>
